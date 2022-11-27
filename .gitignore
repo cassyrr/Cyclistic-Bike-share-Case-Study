@@ -15,11 +15,11 @@ library(ggplot2)  #helps visualize data
 library("readxl")
 ```
 
-1. Collect Data 
+# 1. Collect Data 
 
-* I imported 12 month’s csv. files of the Cyclistic trip data for past 12 months in 2021, and combine them into one dataset. 
+# I imported 12 month’s csv. files of the Cyclistic trip data for past 12 months in 2021, and combine them into one dataset. 
 
-* The dataset I’m going to use for the analysis is Cyclistic’s historical trip data I obtained from google certificate program provided which is a public data and has been available by Motivate International Inc. under this license. The data-privacy issue prohibits you from using riders’ personally identifiable information, but it won’t be a problem since the dataset does not include the riders’ personal identifiable information. 
+# The dataset I’m going to use for the analysis is Cyclistic’s historical trip data I obtained from google certificate program provided which is a public data and has been available by Motivate International Inc. under this license. The data-privacy issue prohibits you from using riders’ personally identifiable information, but it won’t be a problem since the dataset does not include the riders’ personal identifiable information. 
 
 ```{r, echo=TRUE,include=FALSE,message=FALSE}
 
@@ -60,13 +60,13 @@ trip2021 <- trips2021 %>% select(-c(start_station_id,end_station_id,start_lat,en
 
 ```
 
-2. Clean up data and process it for analysis
+# 2. Clean up data and process it for analysis
 
-In this step, I cleaned and prepared the data for analysis.
+# In this step, I cleaned and prepared the data for analysis.
 
-* I dropped the columns that will not be used in the later analysis.
-* Since the data frame does not have enough information to help me do the analysis thoroughly, I added columns to get enough information: ride_length, day, month, and day_of_week. 
-* I removed 147 rows with the ride_length smaller than 0 and 0 duplicated row. 
+#  I dropped the columns that will not be used in the later analysis.
+#  Since the data frame does not have enough information to help me do the analysis thoroughly, I added columns to get enough information: ride_length, day, month, and day_of_week. 
+#  I removed 147 rows with the ride_length smaller than 0 and 0 duplicated row. 
 
 ```{r,echo=TRUE,include=FALSE,message=FALSE}
 # overview of my dataset
@@ -97,9 +97,9 @@ trip2021_v3 <- trip2021_v2[!duplicated(trip2021_v2$ride_id), ]
 
 ```
 
-3. Conduct descriptive analysis
+# 3. Conduct descriptive analysis
 
-In this step, I focused on comparing and analyzing the different behavior between member and casual riders.
+# In this step, I focused on comparing and analyzing the different behavior between member and casual riders.
 
 ```{r}
 # compare the proportion of member riders and casual riders
@@ -113,7 +113,7 @@ ggplot(trip2021_v3, aes(member_casual, fill=member_casual)) +
     labs(title="Proportion of Casuals vs. Members")
 ```
 
-(1)	I plotted the total number of member riders and casual riders and found that member riders 9% higher proportion than casual riders.
+#(1)	I plotted the total number of member riders and casual riders and found that member riders 9% higher proportion than casual riders.
 
 ```{r}
 # Compare members and casual riders (aggregate(sum_var ~ group_var, data = df, FUN = mean))
@@ -128,11 +128,11 @@ aggregate(trip2021_v3$ride_length ~ trip2021_v3$member_casual + trip2021_v3$day_
 ggplot(trip2021_v3,aes(day_of_week,fill=member_casual)) + geom_bar() + labs(title = "Day_of_week casuals vs. members") + coord_flip()
 ```
 
-(2)	The mean of ride length for casual riders is around 3 times longer than member riders.
-(3)	The longest ride length for casual riders is 35 times longer than member riders.
-(4)	I compared the count of riders on different days of the week. There are the most riders using our products on weekends, Saturday has the biggest volume.
-Member riders are the main proportion of all the users, but casual riders take place having the most data during the weekend. The number of casual riders starts increasing from Friday every week.
-There was about the same number of member riders using the product each day of the week.
+#(2)	The mean of ride length for casual riders is around 3 times longer than member riders.
+#(3)	The longest ride length for casual riders is 35 times longer than member riders.
+#(4)	I compared the count of riders on different days of the week. There are the most riders using our products on weekends, Saturday has the biggest volume.
+#Member riders are the main proportion of all the users, but casual riders take place having the most data during the weekend. The number of casual riders starts increasing from Friday every week.
+#There was about the same number of member riders using the product each day of the week.
 
 
 ```{r}
@@ -149,13 +149,13 @@ trip2021_v3 %>%
 ggplot(trip2021_v3,aes(month,fill=member_casual)) + geom_bar() + labs(title = "Riders in month casual vs. members")
 ```
 
-(5)	I compared the count of riders using our products on each month. 
+#(5)	I compared the count of riders using our products on each month. 
 
-And found that the high volume happened in June, July, August, and September, which had around 14% of the total number of riders in 2021. 
+#And found that the high volume happened in June, July, August, and September, which had around 14% of the total number of riders in 2021. 
 
-In most months, count of member riders were more than casual riders except July, August, and June.
+#In most months, count of member riders were more than casual riders except July, August, and June.
 
-Casual riders were 7% more than member users in July, 3% more than member users in August, and 1% more than member users in June.
+#Casual riders were 7% more than member users in July, 3% more than member users in August, and 1% more than member users in June.
 
 ```{r}
 # Rideable type
@@ -172,9 +172,9 @@ ggplot(trip2021_v3, aes(rideable_type, fill=member_casual)) +
     coord_flip()
 ```
 
-(6)	I compared the count of riders by different types of bikes provided by the company. Classic bike has the most volume of riders, member riders were 23% more than casual riders. Same as electric_bike.
+#(6)	I compared the count of riders by different types of bikes provided by the company. Classic bike has the most volume of riders, member riders were 23% more than casual riders. Same as electric_bike.
 
-Only casual riders used docked_bike.
+#Only casual riders used docked_bike.
 
 ```{r}
 # Average riding length(duration)
@@ -187,9 +187,9 @@ trip2021_v3 %>%
   geom_col(position = "dodge")
 ```
 
-(7)	I compared average riding time on each day of the week.
+#(7)	I compared average riding time on each day of the week.
 
-Overall, casual riders used almost 2 times longer riding time than member riders, and the longest riding time concentrated on Sunday. 
+#Overall, casual riders used almost 2 times longer riding time than member riders, and the longest riding time concentrated on Sunday. 
 
 ```{r}
 # Average riding length(duration) on different rideable types
@@ -202,37 +202,37 @@ trip2021_v3 %>%
 
 ```
 
-(8)	I compared average riding time on different rideable types.
+#(8)	I compared average riding time on different rideable types.
 
-Docked_bike had the longest duration of riding. But since I found that only casual riders used docked bike and casual riders used longer than member riders. Then classic bike has the second longest riding length.
+#Docked_bike had the longest duration of riding. But since I found that only casual riders used docked bike and casual riders used longer than member riders. Then classic bike has the second longest riding length.
 
-4. Summary
+# 4. Summary
 
-* What did I discover from the data?
+# What did I discover from the data?
 
-Member riders and casual riders act differently in weekdays.
-Casual riders have different riding length from member riders. 
-Only casual riders use docked bikes.
+# Member riders and casual riders act differently in weekdays.
+# Casual riders have different riding length from member riders. 
+# Only casual riders use docked bikes.
  
-* Trends from the data?
+# Trends from the data?
 
-More member riders than casual riders.
-More riders on the weekends and casual riders take bigger proportion. The number of member users in the weekdays approximately stay the same.
-Member riders prefer classic bike or electric bikes.
-Casual riders have longer riding time than member riders.
-The volume of users is affected by weather and temperature. Small number of riders use bikes in cold weather, and big number of riders use bikes in summertime.
+# More member riders than casual riders.
+# More riders on the weekends and casual riders take bigger proportion. The number of member users in the weekdays approximately stay the same.
+# Member riders prefer classic bike or electric bikes.
+# Casual riders have longer riding time than member riders.
+# The volume of users is affected by weather and temperature. Small number of riders use bikes in cold weather, and big number of riders use bikes in summertime.
 
-* How this relates to business problem?
+# How this relates to business problem?
 
-The purpose of using the bikes between members and casuals could be different. The member riders use that to going to work with the fixed schedule during the weekday, while the casual riders use that on weekend for recreation and it is not scheduled. 
+# The purpose of using the bikes between members and casuals could be different. The member riders use that to going to work with the fixed schedule during the weekday, while the casual riders use that on weekend for recreation and it is not scheduled. 
 
-* To encourage casual riders to become members:
+# To encourage casual riders to become members:
              
-(1)	Set a cap of riding time for casual users.
-(2)	Raise the price for non-member use during the weekend and summertime.
-(3)	Set price promotion during the weekday for casual users.
-(4)	Introduce 2 types of members, one is regular members, the new one is members could enjoy priority and unlimited riding length during the peak-hour.
-(5)	Raise the price for docked bike or set a lower price for members.
+# (1)	Set a cap of riding time for casual users.
+# (2)	Raise the price for non-member use during the weekend and summertime.
+# (3)	Set price promotion during the weekday for casual users.
+# (4)	Introduce 2 types of members, one is regular members, the new one is members could enjoy priority and unlimited riding length during the peak-hour.
+# (5)	Raise the price for docked bike or set a lower price for members.
 
 
 
