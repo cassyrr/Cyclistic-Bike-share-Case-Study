@@ -201,39 +201,6 @@ trip2021_v3 %>%
   geom_col()
 
 ```
- 
-(8)	I compared average riding time on different rideable types.
-
-Docked_bike had the longest duration of riding. But since I found that only casual riders used docked bike and casual riders used longer than member riders. Then classic bike has the second longest riding length.
-
-4. Summary
-
-* What did I discover from the data?
-
-Member riders and casual riders act differently in weekdays.
-Casual riders have different riding length from member riders. 
-Only casual riders use docked bikes.
- 
-* Trends from the data?
-
-More member riders than casual riders.
-More riders on the weekends and casual riders take bigger proportion. The number of member users in the weekdays approximately stay the same.
-Member riders prefer classic bike or electric bikes.
-Casual riders have longer riding time than member riders.
-The volume of users is affected by weather and temperature. Small number of riders use bikes in cold weather, and big number of riders use bikes in summertime.
-
-* How this relates to business problem?
-
-The purpose of using the bikes between members and casuals could be different. The member riders use that to going to work with the fixed schedule during the weekday, while the casual riders use that on weekend for recreation and it is not scheduled. 
-
-* To encourage casual riders to become members:
-             
-(1)	Set a cap of riding time for casual users.
-(2)	Raise the price for non-member use during the weekend and summertime.
-(3)	Set price promotion during the weekday for casual users.
-(4)	Introduce 2 types of members, one is regular members, the new one is members could enjoy priority and unlimited riding length during the peak-hour.
-(5)	Raise the price for docked bike or set a lower price for members.
-
 
 
 
