@@ -70,11 +70,11 @@ trip2021 <- trips2021 %>% select(-c(start_station_id,end_station_id,start_lat,en
 
 ```{r,echo=TRUE,include=FALSE,message=FALSE}
 # overview of my dataset
-colnames(trip2021)  #List of column names
-nrow(trip2021)  #How many rows are in data frame?
-dim(trip2021)  #Dimensions of the data frame?
-head(trip2021)  #See the first 6 rows of data frame.  Also tail(all_trips)
-str(trip2021)  #See list of columns and data types (numeric, character, etc)
+colnames(trip2021)  #columns
+nrow(trip2021)  #rows
+dim(trip2021)  #Dimensions
+head(trip2021)  #first 6 rows
+str(trip2021)  #data types
 summary(trip2021)  
 
 # add columns
@@ -83,7 +83,7 @@ str(trip2021$ride_length)
 trip2021$ride_length <- as.numeric(trip2021$ride_length)
 is.numeric(trip2021$ride_length)
 
-trip2021$date <- as.Date(trip2021$started_at) #The default format is yyyy-mm-dd
+trip2021$date <- as.Date(trip2021$started_at) 
 trip2021$month <- format(as.Date(trip2021$date), "%m")
 trip2021$day <- format(as.Date(trip2021$date), "%d")
 trip2021$day_of_week <- format(as.Date(trip2021$date), "%A")
