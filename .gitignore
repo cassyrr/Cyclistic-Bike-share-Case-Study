@@ -9,9 +9,9 @@ date: '2022-07-01'
 
 ```{r, echo=TRUE,include=FALSE,message=FALSE}
 # packages
-library(tidyverse)  #helps wrangle data
-library(lubridate)  #helps wrangle date attributes
-library(ggplot2)  #helps visualize data
+library(tidyverse) 
+library(lubridate)  
+library(ggplot2)  
 library("readxl")
 ```
 
@@ -75,7 +75,7 @@ nrow(trip2021)  #How many rows are in data frame?
 dim(trip2021)  #Dimensions of the data frame?
 head(trip2021)  #See the first 6 rows of data frame.  Also tail(all_trips)
 str(trip2021)  #See list of columns and data types (numeric, character, etc)
-summary(trip2021)  #Statistical summary of data. Mainly for numerics
+summary(trip2021)  
 
 # add columns
 trip2021$ride_length <- difftime(trip2021$ended_at,trips2021$started_at,units = "mins")
